@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator </title>
+</head>
+
+<body>
+    <h1>Kalkulator </h1>
+    <form id="form">
+        <label for="angka1">Angka pertama:</label><br>
+        <input type="number" id="angka1" required><br><br>
+
+        <label for="operator">Operator:</label><br>
+        <select id="operator" required>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select><br><br>
+
+        <label for="angka2">Angka kedua:</label><br>
+        <input type="number" id="angka2" required><br><br>
+
+        <button type="button" onclick="hitung()">Hitung</button><br><br>
+
+        <label for="hasil">Hasil:</label><br>
+        <input type="text" id="hasil" readonly>
+    </form>
+
+    <script>
+        function hitung() {
+            var angka1 = parseFloat(document.getElementById("angka1").value);
+            var angka2 = parseFloat(document.getElementById("angka2").value);
+            var operator = document.getElementById("operator").value;
+
+            let hasil;
+            switch (operator) {
+                case '+':
+                    hasil = angka1 + angka2;
+                    break;
+                case '-':
+                    hasil = angka1 - angka2;
+                    break;
+                case '*':
+                    hasil = angka1 * angka2;
+                    break;
+                case '/':
+                    if (angka2 === 0) {
+                        alert('Error: Pembagian dengan nol');
+                        return;
+                    }
+                    hasil = angka1 / angka2;
+                    break;
+                default:
+                    alert('Error: Operator tidak valid');
+                    return;
+            }
+
+            document.getElementById('hasil').value = hasil;
+        }
+    </script>
+</body>
+
+</html>
